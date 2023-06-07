@@ -20,5 +20,11 @@ namespace Final_Project.Repository
             return "Create User Success!";
         }
 
+
+        public static User userLogin(string name, string pw)
+        {
+            User x = (from i in db.Users where i.Username == name && i.Password == pw select i).FirstOrDefault();
+            return x;
+        }
     }
 }

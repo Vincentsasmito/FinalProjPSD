@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Final_Project.Repository;
+using Final_Project.Model;
 
 namespace Final_Project.Handler
 {
@@ -11,6 +12,12 @@ namespace Final_Project.Handler
         public static string newUser(string roleid, string username, string email, string gender, string password)
         {
             return UserRepository.newUser(roleid, username, email, gender, password);
+        }
+
+        public static User userLogin(string name, string pw)
+        {
+            User x = UserRepository.userLogin(name, pw);
+            return x;
         }
     }
 }
