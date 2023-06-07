@@ -16,7 +16,7 @@ namespace Final_Project.Views
 
         protected void LoginBtnClick(object sender, EventArgs e)
         {
-
+            Response.Redirect("Login.aspx");
         }
 
         protected void RegisterBtnClick(object sender, EventArgs e)
