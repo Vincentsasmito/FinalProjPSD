@@ -19,7 +19,7 @@
             <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
         </p>
         <p>
-            <asp:CheckBox ID="Remember" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" />
+            <asp:CheckBox ID="Remember" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Text="Remember Me" />
         </p>
         <asp:Button ID="Button1" runat="server" Text="Login" OnClick="Button1_Click" />
         <br />

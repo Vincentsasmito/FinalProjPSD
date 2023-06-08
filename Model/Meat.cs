@@ -21,7 +21,7 @@ namespace Final_Project.Model
         }
     
         public int id { get; set; }
-        public string name { get; set; }
+        public string meatName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ramen> Ramen { get; set; }

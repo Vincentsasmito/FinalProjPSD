@@ -26,7 +26,7 @@ warning 6002: The table/view 'C:\USERS\MSI\SOURCE\REPOS\FINAL PROJECT\APP_DATA\D
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="meatName" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Ramen">
     <Key>

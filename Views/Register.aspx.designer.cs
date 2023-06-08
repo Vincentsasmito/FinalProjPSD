@@ -42,22 +42,13 @@ namespace Final_Project.Views
         protected global::System.Web.UI.WebControls.TextBox TBEmail;
 
         /// <summary>
-        /// RadioButtonM control.
+        /// RadioButtonList1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButtonM;
-
-        /// <summary>
-        /// RadioButtonF control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButtonF;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
 
         /// <summary>
         /// TBPw control.
@@ -85,6 +76,15 @@ namespace Final_Project.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button CreateAccBtn;
+
+        /// <summary>
+        /// RadioButtonListRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListRole;
 
         /// <summary>
         /// ListBox1 control.

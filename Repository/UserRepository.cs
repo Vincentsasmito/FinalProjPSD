@@ -9,8 +9,8 @@ namespace Final_Project.Repository
 {
     public class UserRepository
     {
-        public static Database1Entities db = new Database1Entities();
-        
+        public static Database1Entities1 db = new Database1Entities1();
+
         public static string newUser(string roleid, string username, string email, string gender, string password)
         {
             User newU = UserFactory.CreateUser(roleid, username, email, gender, password);

@@ -22,23 +22,33 @@ namespace Final_Project.Views
         protected void CreateAccBtn_Click(object sender, EventArgs e)
         {
             string gender = "";
-            if(RadioButtonM.Checked == true)
+
+            if(RadioButtonList1.SelectedValue != null)
             {
-                gender = "male";
+                gender = RadioButtonList1.SelectedValue;
             }
-            else if (RadioButtonF.Checked == true)
+
+            string role = "";
+            if(RadioButtonListRole.SelectedValue != null)
             {
-                gender = "female";
+                role = RadioButtonListRole.SelectedValue;
             }
-            string resp = UserController.validateUser("3", TBName.Text, TBEmail.Text, gender, TBPw.Text, TBPwC.Text);
+           
+            string resp = UserController.validateUser(role, TBName.Text, TBEmail.Text, gender, TBPw.Text, TBPwC.Text);
 
             ListBox1.Items.Clear();
+            ListBox1.Items.Add(role);
             ListBox1.Items.Add(TBName.Text);
             ListBox1.Items.Add(TBEmail.Text);
             ListBox1.Items.Add(gender);
             ListBox1.Items.Add(TBPw.Text);
             ListBox1.Items.Add(TBPwC.Text);
             ListBox1.Items.Add(resp);
+        }
+
+        protected void RadioButtonList1_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            
         }
     }
 }

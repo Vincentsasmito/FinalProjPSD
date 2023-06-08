@@ -19,7 +19,7 @@ namespace Final_Project.Controller
         {
             //validate that all fields are filled
             if(username.Length == 0 || email.Length == 0 || gender.Length == 0
-                || password.Length == 0 || passwordC.Length == 0)
+                || password.Length == 0 || passwordC.Length == 0 || roleid.Length == 0)
             {
                 return "Please fill all fields";
             }

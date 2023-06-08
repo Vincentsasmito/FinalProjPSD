@@ -16,11 +16,11 @@
         <asp:TextBox ID="TBEmail" runat="server"></asp:TextBox>
         <br />
         <br />
-        Gender
-        <asp:RadioButton ID="RadioButtonM" Text="Male" runat="server" />
-        <asp:RadioButton ID="RadioButtonF" Text="Female" runat="server" />
-        
-        <p>
+        Gender<asp:RadioButtonList ID="RadioButtonList1" runat="server" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged1">
+            <asp:ListItem Value="Male">Male</asp:ListItem>
+            <asp:ListItem Value="Female">Female</asp:ListItem>
+        </asp:RadioButtonList>
+&nbsp;<p>
             Password</p>
         <asp:TextBox ID="TBPw" runat="server"></asp:TextBox>
         <p>
@@ -29,6 +29,15 @@
         
         <p>
             <asp:Button ID="CreateAccBtn" runat="server" Text="Create Account" OnClick="CreateAccBtn_Click" />
+        </p>
+        <p>
+            User Role:</p>
+        <p>
+            <asp:RadioButtonList ID="RadioButtonListRole" runat="server">
+                <asp:ListItem Value="1">Admin</asp:ListItem>
+                <asp:ListItem Value="2">Staff</asp:ListItem>
+                <asp:ListItem Value="3">Member</asp:ListItem>
+            </asp:RadioButtonList>
         </p>
         
         <asp:ListBox ID="ListBox1" runat="server" Height="152px" Width="342px"></asp:ListBox>
