@@ -13,12 +13,15 @@ namespace Final_Project.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie uCook = Request.Cookies.Get("UserData");
-            if(uCook != null)
+            if(!IsPostBack)
             {
-                TextBox1.Text = uCook["username"];
-                TextBox2.Text = uCook["password"];
-                Remember.Checked = true;
+                HttpCookie uCook = Request.Cookies.Get("UserData");
+                if (uCook != null)
+                {
+                    TextBox1.Text = uCook["username"];
+                    TextBox2.Text = uCook["password"];
+                    Remember.Checked = true;
+                }
             }
         }
 
@@ -41,11 +44,21 @@ namespace Final_Project.Views
                 uCook["username"] = x.Username;
                 uCook["password"] = x.Password;
                 Session["password"] = x.Password;
-
+                
+                if(Remember.Checked)
+                {
+                    uCook.Expires = DateTime.Now.AddHours(48);
+                    Response.Cookies.Add(uCook);
+                }
+                else
+                {
+                    uCook.Expires.AddSeconds(69);
+                    Response.Cookies.Add(uCook);
+                }
                 switch (x.Roleid)
                 {
                     case 3:
-                        Response.Redirect("CustomerHome.aspx");
+                        Response.Redirect("Home.aspx");
                         break;
 
                     default:
@@ -59,15 +72,6 @@ namespace Final_Project.Views
 
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(Remember.Checked == true)
-            {
-                Remember.Checked = false;
-            }
-            else
-            {
-                Remember.Checked = true;
-            }
-
 
         }
     }
