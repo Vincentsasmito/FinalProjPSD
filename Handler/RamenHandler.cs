@@ -21,5 +21,10 @@ namespace Final_Project.Handler
         {
             return RamenRepository.UpdateRamen(id, meatid, name, broth, price);
         }
+
+        public static void DeleteRamen(int id)
+        {
+            RamenRepository.DeleteRamen(id);
+        }
     }
 }

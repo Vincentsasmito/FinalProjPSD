@@ -53,8 +53,12 @@ namespace Final_Project.Repository
             {
                 return ramen.id.ToString();
             }
+        }
 
-            
+        public static void DeleteRamen(int id)
+        {
+            db.Ramen.Remove(db.Ramen.Find(id));
+            db.SaveChanges();
         }
     }
 } 

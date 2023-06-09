@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateRamen.aspx.cs" Inherits="Final_Project.Views.UpdateRamen" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateRamen.aspx.cs" Inherits="Final_Project.Views.UpdateRamen"%>
 
 <!DOCTYPE html>
 

@@ -12,21 +12,39 @@ namespace Final_Project.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string ramenId = "";
+            if(!IsPostBack)
+            {
+                ramenId = Request.QueryString["ramenId"];
+            }
             //Not accessible to customer
             HttpCookie cookie = Request.Cookies.Get("UserData");
             if (cookie == null)
             {
-                Response.Redirect("~/Views/Login.aspx");
+                Response.Redirect("~/Views/Users/Login.aspx");
             }
             else if(cookie["roleid"] == "3")
             {
-                Response.Redirect("~/Views/Home.aspx");
+                Response.Redirect("~/Views/Users/Home.aspx");
             }
             List<RamenRes> ramenList = RamenHandler.GetRamen();
 
             for(int i = 0; i < ramenList.Count(); i++)
             {
-                DropDownList1.Items.Add(ramenList[i].name);
+                ListItem item = new ListItem(ramenList[i].id + "|" + ramenList[i].name);
+                DropDownList1.Items.Add(item);
+            }
+            if(ramenId != null && ramenId.Length != 0)
+            {
+                for(int i = 0; i < DropDownList1.Items.Count; i++)
+                {
+                    if (ramenId == DropDownList1.Items[i].Value.Split('|')[0])
+                    {
+                        DropDownList1.SelectedIndex = i;
+                        break;
+                    }
+                }
+                
             }
         }
 
@@ -37,7 +55,7 @@ namespace Final_Project.Views
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            int id = DropDownList1.SelectedIndex;
+            int id = Convert.ToInt32(DropDownList1.SelectedItem.Value.Split('|')[0]);
             int meatid = 0;
             if (RadioButtonList1.SelectedValue != null && RadioButtonList1.SelectedValue != "")
             {

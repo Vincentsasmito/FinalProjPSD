@@ -31,5 +31,10 @@ namespace Final_Project.Views
             ListBox1.Items.Add(TextBox3.Text);
             ListBox1.Items.Add(res);
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ManageRamen.aspx");
+        }
     }
 }
