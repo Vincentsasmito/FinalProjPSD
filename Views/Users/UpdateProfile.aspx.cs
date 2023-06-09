@@ -28,7 +28,7 @@ namespace Final_Project.Views
             }
             else
             {
-                Response.Redirect("~/Views/Users/Login.aspx");
+                Response.Redirect("Login.aspx");
             }
         }
 

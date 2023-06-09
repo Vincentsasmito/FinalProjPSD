@@ -21,7 +21,7 @@ namespace Final_Project.Views
 
         protected void RegisterBtnClick(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/Register.aspx");
+            Response.Redirect("Register.aspx");
         }
     }
 }

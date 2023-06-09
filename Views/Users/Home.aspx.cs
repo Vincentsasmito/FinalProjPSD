@@ -20,7 +20,7 @@ namespace Final_Project.Views
             HttpCookie cookie = Request.Cookies.Get("UserData");
             if(cookie == null)
             {
-                Response.Redirect("~/Views/Login.aspx");
+                Response.Redirect("Login.aspx");
             }
             else
             {

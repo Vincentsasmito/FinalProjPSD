@@ -35,6 +35,7 @@
         <br />
         <br />
         <asp:ListBox ID="ListBox1" runat="server"></asp:ListBox>
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" />
     </form>
 </body>
 </html>

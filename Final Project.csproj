@@ -103,6 +103,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Views\Ramen\CreateRamen.aspx" />
+    <Content Include="Views\Ramen\ManageRamen.aspx" />
     <Content Include="Views\Users\Home.aspx" />
     <Content Include="Views\Users\Homepage.aspx" />
     <Content Include="Views\Users\Login.aspx" />
@@ -161,6 +162,13 @@
     </Compile>
     <Compile Include="Views\Ramen\CreateRamen.aspx.designer.cs">
       <DependentUpon>CreateRamen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Ramen\ManageRamen.aspx.cs">
+      <DependentUpon>ManageRamen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Ramen\ManageRamen.aspx.designer.cs">
+      <DependentUpon>ManageRamen.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Users\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
