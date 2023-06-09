@@ -52,18 +52,10 @@ namespace Final_Project.Views
                 }
                 else
                 {
-                    uCook.Expires.AddSeconds(69);
+                    uCook.Expires = DateTime.Now.AddSeconds(69);
                     Response.Cookies.Add(uCook);
                 }
-                switch (x.Roleid)
-                {
-                    case 3:
-                        Response.Redirect("Home.aspx");
-                        break;
-
-                    default:
-                        break;
-                }
+                Response.Redirect("Home.aspx");
             }
 
             

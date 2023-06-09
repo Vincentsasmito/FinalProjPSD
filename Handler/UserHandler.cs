@@ -19,5 +19,15 @@ namespace Final_Project.Handler
             User x = UserRepository.userLogin(name, pw);
             return x;
         }
+
+        public static List<User> getMember()
+        {
+            return UserRepository.getMember();
+        }
+
+        public static List<User> getStaff()
+        {
+            return UserRepository.getStaff();
+        }
     }
 }

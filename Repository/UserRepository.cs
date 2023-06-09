@@ -26,5 +26,19 @@ namespace Final_Project.Repository
             User x = (from i in db.Users where i.Username == name && i.Password == pw select i).FirstOrDefault();
             return x;
         }
+
+        public static List<User> getMember()
+        {
+            List<User> member = (from x in db.Users where x.Roleid == 3 select x).ToList();
+
+            return member;
+        }
+
+        public static List<User> getStaff()
+        {
+            List<User> staff = (from x in db.Users where x.Roleid == 2 select x).ToList();
+
+            return staff;
+        }
     }
 }

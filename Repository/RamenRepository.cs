@@ -11,15 +11,6 @@ namespace Final_Project.Repository
     {
         public static Database1Entities1 db = new Database1Entities1();
 
-        public class RamenRes
-        {
-            public int id { get; set; }
-            public string meatName { get; set; }
-            public string name { get; set; }
-            public string broth { get; set; }
-            public string price { get; set; }
-        }
-
         public static List<RamenRes> GetRamen()
         {
             List<RamenRes> res = (from x in db.Ramen join y in db.Meats on x.Meatid equals y.id select new RamenRes
@@ -44,5 +35,26 @@ namespace Final_Project.Repository
             return "Successfuly created ramen!";
         }
         
+        public static string UpdateRamen(int id, int meatid, string name, string broth, string price)
+        {
+            Ramen ramen = db.Ramen.Find(id);
+            if(ramen != null)
+            {
+                ramen.Meatid = meatid;
+                ramen.Name = name;
+                ramen.Broth = broth;
+                ramen.Price = price;
+
+                db.SaveChanges();
+                return "Update Ramen Success!";
+            }
+            //This position should never be reached ini bisa dihapus nanti cuman buat testing purposes aja
+            else
+            {
+                return ramen.id.ToString();
+            }
+
+            
+        }
     }
-}
+} 
