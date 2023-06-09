@@ -102,12 +102,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\CreateRamen.aspx" />
-    <Content Include="Views\Home.aspx" />
-    <Content Include="Views\Homepage.aspx" />
-    <Content Include="Views\Login.aspx" />
-    <Content Include="Views\Register.aspx" />
-    <Content Include="Views\UpdateRamen.aspx" />
+    <Content Include="Views\Ramen\CreateRamen.aspx" />
+    <Content Include="Views\Users\Home.aspx" />
+    <Content Include="Views\Users\Homepage.aspx" />
+    <Content Include="Views\Users\Login.aspx" />
+    <Content Include="Views\Users\Register.aspx" />
+    <Content Include="Views\Users\UpdateProfile.aspx" />
+    <Content Include="Views\Ramen\UpdateRamen.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -154,46 +155,53 @@
     <Compile Include="RamenRes.Cs" />
     <Compile Include="Repository\RamenRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
-    <Compile Include="Views\CreateRamen.aspx.cs">
+    <Compile Include="Views\Ramen\CreateRamen.aspx.cs">
       <DependentUpon>CreateRamen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\CreateRamen.aspx.designer.cs">
+    <Compile Include="Views\Ramen\CreateRamen.aspx.designer.cs">
       <DependentUpon>CreateRamen.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Home.aspx.cs">
+    <Compile Include="Views\Users\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Home.aspx.designer.cs">
+    <Compile Include="Views\Users\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Homepage.aspx.cs">
+    <Compile Include="Views\Users\Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Homepage.aspx.designer.cs">
+    <Compile Include="Views\Users\Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Login.aspx.cs">
+    <Compile Include="Views\Users\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Login.aspx.designer.cs">
+    <Compile Include="Views\Users\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Register.aspx.cs">
+    <Compile Include="Views\Users\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Register.aspx.designer.cs">
+    <Compile Include="Views\Users\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\UpdateRamen.aspx.cs">
+    <Compile Include="Views\Users\UpdateProfile.aspx.cs">
+      <DependentUpon>UpdateProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Users\UpdateProfile.aspx.designer.cs">
+      <DependentUpon>UpdateProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Ramen\UpdateRamen.aspx.cs">
       <DependentUpon>UpdateRamen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\UpdateRamen.aspx.designer.cs">
+    <Compile Include="Views\Ramen\UpdateRamen.aspx.designer.cs">
       <DependentUpon>UpdateRamen.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

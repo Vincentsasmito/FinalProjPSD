@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\obj"
+    "\\obj",
+    "\\Views"
   ],
-  "SelectedNode": "\\obj",
+  "SelectedNode": "\\Views\\Login.aspx",
   "PreviewInSolutionExplorer": false
 }

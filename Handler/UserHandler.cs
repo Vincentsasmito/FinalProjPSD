@@ -29,5 +29,10 @@ namespace Final_Project.Handler
         {
             return UserRepository.getStaff();
         }
+
+        public static string updateUser(string id, string username, string email, string gender, string password)
+        {
+            return UserRepository.updateUser(Convert.ToInt32(id), username, email, gender, password);
+        }
     }
 }
