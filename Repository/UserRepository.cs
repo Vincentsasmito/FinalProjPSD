@@ -40,5 +40,24 @@ namespace Final_Project.Repository
 
             return staff;
         }
+
+        public static string updateUser(int id, string username, string email, string gender, string password)
+        {
+            User user = db.Users.Find(id);
+            if(user != null)
+            {
+                user.Username = username;
+                user.Email = email;
+                user.Gender = gender;
+                user.Password = password;
+
+                db.SaveChanges();
+                return "Update Success!";
+            }
+            else
+            {
+                return user.id.ToString();
+            }
+        }
     }
 }
