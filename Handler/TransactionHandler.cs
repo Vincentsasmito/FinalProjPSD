@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Final_Project.Repository;
+using Final_Project.Model;
 
 namespace Final_Project.Handler
 {
@@ -25,5 +26,16 @@ namespace Final_Project.Handler
                 return "Transaction Failed!";
             }
         }
+        public static List<Header> getHeader(int customerId)
+        {
+            return TransactionRepository.getHeader(customerId);
+        }
+
+        public static List<DetailRes> getDetail(int headerId)
+        {
+            return TransactionRepository.getDetail(headerId);
+        }
     }
+
+   
 }
