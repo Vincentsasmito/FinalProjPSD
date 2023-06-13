@@ -26,5 +26,34 @@ namespace Final_Project.Repository
             db.SaveChanges();
             return "New Details Added Succesfully";
         }
+
+        public static List<Header> getHeader(int customerId)
+        {
+            if(customerId != 0)
+            {
+                return (from x in db.Headers where x.Customerid == customerId select x).ToList(); ;
+            }
+            //Custid of 0 indicates that an admin is requesting all transactions
+            else
+            {
+                return db.Headers.ToList();
+            }
+        }
+
+        public static List<DetailRes> getDetail(int headerId)
+        {
+            List<DetailRes> details = (from x in db.Ramen
+                                       join y in db.Details on x.id equals y.Ramenid
+                                       where y.Headerid == headerId
+                                       select new DetailRes
+                                       {
+                                           id = x.id,
+                                           ramenName = x.Name,
+                                           broth = x.Broth,
+                                           quantity = y.Quantity,
+                                           price = x.Price,
+                                       }).ToList();
+            return details;
+        }
     }
 }

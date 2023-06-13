@@ -105,6 +105,9 @@
     <Content Include="Views\Ramen\CreateRamen.aspx" />
     <Content Include="Views\Ramen\ManageRamen.aspx" />
     <Content Include="Views\Ramen\OrderRamen.aspx" />
+    <Content Include="Views\Transaction\History.aspx" />
+    <Content Include="Views\Transaction\TransactionDetails.aspx" />
+    <Content Include="Views\Transaction\ViewTransactions.aspx" />
     <Content Include="Views\Users\Home.aspx" />
     <Content Include="Views\Users\Homepage.aspx" />
     <Content Include="Views\Users\Login.aspx" />
@@ -116,6 +119,7 @@
   <ItemGroup>
     <Compile Include="Controller\RamenController.cs" />
     <Compile Include="Controller\UserController.cs" />
+    <Compile Include="DetailRes.cs" />
     <Compile Include="Factory\RamenFactory.cs" />
     <Compile Include="Factory\TransactionFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
@@ -180,6 +184,27 @@
     </Compile>
     <Compile Include="Views\Ramen\OrderRamen.aspx.designer.cs">
       <DependentUpon>OrderRamen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transaction\History.aspx.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Transaction\History.aspx.designer.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transaction\TransactionDetails.aspx.cs">
+      <DependentUpon>TransactionDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Transaction\TransactionDetails.aspx.designer.cs">
+      <DependentUpon>TransactionDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transaction\ViewTransactions.aspx.cs">
+      <DependentUpon>ViewTransactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Transaction\ViewTransactions.aspx.designer.cs">
+      <DependentUpon>ViewTransactions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Users\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
