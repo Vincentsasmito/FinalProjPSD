@@ -19,6 +19,7 @@
                 <h3><%#Eval("Name") %></h3>
                 <p>Broth: <%# Eval("Broth") %></p>
                 <p>Price: <%# Eval("Price") %></p>
+                <p>Meat: <%# Eval("meatName") %></p>
                 <asp:Button ID="UpdateButton" runat="server" UseSubmitBehavior="false" CommandName="Update" CommandArgument='<%# Eval("id") %>' Text="Update" />
                 <asp:Button ID="DeleteButton" runat="server" UseSubmitBehavior="false" CommandName="Delete" CommandArgument='<%# Eval("id") %>' Text="Delete" />
             </ItemTemplate>

@@ -5,14 +5,11 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\MSI\SOURCE\REPOS\FINAL PROJECT\APP_DATA\DATABASE1.MDF.dbo.Detail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Detail">
           <Key>
-            <PropertyRef Name="Headerid" />
-            <PropertyRef Name="Ramenid" />
-            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Headerid" Type="int" Nullable="false" />
           <Property Name="Ramenid" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
@@ -122,18 +119,12 @@ warning 6002: The table/view 'C:\USERS\MSI\SOURCE\REPOS\FINAL PROJECT\APP_DATA\D
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="Detail" EntityType="Self.Detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Header" EntityType="Self.Header" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Meat" EntityType="Self.Meat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ramen" EntityType="Self.Ramen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Detail" EntityType="Self.Detail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Detail].[Headerid] AS [Headerid], 
-    [Detail].[Ramenid] AS [Ramenid], 
-    [Detail].[Quantity] AS [Quantity]
-    FROM [dbo].[Detail] AS [Detail]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Detail_Header" Association="Self.FK_Detail_Header">
             <End Role="Header" EntitySet="Header" />
             <End Role="Detail" EntitySet="Detail" />
@@ -167,8 +158,8 @@ warning 6002: The table/view 'C:\USERS\MSI\SOURCE\REPOS\FINAL PROJECT\APP_DATA\D
           <Property Name="Customerid" Type="Int32" Nullable="false" />
           <Property Name="staffid" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Details" Relationship="Self.FK_Detail_Header" FromRole="Header" ToRole="Detail" />
           <NavigationProperty Name="User" Relationship="Self.FK_Header_User" FromRole="Header" ToRole="User" />
+          <NavigationProperty Name="Details" Relationship="Database1Model.FK_Detail_Header" FromRole="Header" ToRole="Detail" />
         </EntityType>
         <EntityType Name="Meat">
           <Key>
@@ -188,7 +179,7 @@ warning 6002: The table/view 'C:\USERS\MSI\SOURCE\REPOS\FINAL PROJECT\APP_DATA\D
           <Property Name="Broth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Meat" Relationship="Self.FK_Ramen_Meat" FromRole="Ramen" ToRole="Meat" />
-          <NavigationProperty Name="Details" Relationship="Self.FK_Detail_Ramen" FromRole="Ramen" ToRole="Detail" />
+          <NavigationProperty Name="Details" Relationship="Database1Model.FK_Detail_Ramen" FromRole="Ramen" ToRole="Detail" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -211,30 +202,6 @@ warning 6002: The table/view 'C:\USERS\MSI\SOURCE\REPOS\FINAL PROJECT\APP_DATA\D
           <NavigationProperty Name="Headers" Relationship="Self.FK_Header_User" FromRole="User" ToRole="Header" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
-        <EntityType Name="Detail">
-          <Key>
-            <PropertyRef Name="Headerid" />
-            <PropertyRef Name="Ramenid" />
-            <PropertyRef Name="Quantity" />
-          </Key>
-          <Property Name="Headerid" Type="Int32" Nullable="false" />
-          <Property Name="Ramenid" Type="Int32" Nullable="false" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Header" Relationship="Self.FK_Detail_Header" FromRole="Detail" ToRole="Header" />
-          <NavigationProperty Name="Raman" Relationship="Self.FK_Detail_Ramen" FromRole="Detail" ToRole="Ramen" />
-        </EntityType>
-        <Association Name="FK_Detail_Header">
-          <End Role="Header" Type="Self.Header" Multiplicity="1" />
-          <End Role="Detail" Type="Self.Detail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Header">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Detail">
-              <PropertyRef Name="Headerid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Header_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Header" Type="Self.Header" Multiplicity="*" />
@@ -259,18 +226,6 @@ warning 6002: The table/view 'C:\USERS\MSI\SOURCE\REPOS\FINAL PROJECT\APP_DATA\D
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Detail_Ramen">
-          <End Role="Ramen" Type="Database1Model.Ramen" Multiplicity="1" />
-          <End Role="Detail" Type="Self.Detail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ramen">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Detail">
-              <PropertyRef Name="Ramenid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -289,11 +244,6 @@ warning 6002: The table/view 'C:\USERS\MSI\SOURCE\REPOS\FINAL PROJECT\APP_DATA\D
           <EntitySet Name="Ramen" EntityType="Database1Model.Ramen" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="Details" EntityType="Self.Detail" />
-          <AssociationSet Name="FK_Detail_Header" Association="Self.FK_Detail_Header">
-            <End Role="Header" EntitySet="Headers" />
-            <End Role="Detail" EntitySet="Details" />
-          </AssociationSet>
           <AssociationSet Name="FK_Header_User" Association="Self.FK_Header_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Header" EntitySet="Headers" />
@@ -302,15 +252,55 @@ warning 6002: The table/view 'C:\USERS\MSI\SOURCE\REPOS\FINAL PROJECT\APP_DATA\D
             <End Role="Meat" EntitySet="Meats" />
             <End Role="Ramen" EntitySet="Ramen" />
           </AssociationSet>
-          <AssociationSet Name="FK_Detail_Ramen" Association="Self.FK_Detail_Ramen">
-            <End Role="Ramen" EntitySet="Ramen" />
-            <End Role="Detail" EntitySet="Details" />
-          </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Details" EntityType="Database1Model.Detail" />
+          <AssociationSet Name="FK_Detail_Header" Association="Database1Model.FK_Detail_Header">
+            <End Role="Header" EntitySet="Headers" />
+            <End Role="Detail" EntitySet="Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detail_Ramen" Association="Database1Model.FK_Detail_Ramen">
+            <End Role="Ramen" EntitySet="Ramen" />
+            <End Role="Detail" EntitySet="Details" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Detail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Headerid" Type="Int32" Nullable="false" />
+          <Property Name="Ramenid" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Header" Relationship="Database1Model.FK_Detail_Header" FromRole="Detail" ToRole="Header" />
+          <NavigationProperty Name="Raman" Relationship="Database1Model.FK_Detail_Ramen" FromRole="Detail" ToRole="Ramen" />
+        </EntityType>
+        <Association Name="FK_Detail_Header">
+          <End Type="Database1Model.Header" Role="Header" Multiplicity="1" />
+          <End Type="Database1Model.Detail" Role="Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Header">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Detail">
+              <PropertyRef Name="Headerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detail_Ramen">
+          <End Type="Database1Model.Ramen" Role="Ramen" Multiplicity="1" />
+          <End Type="Database1Model.Detail" Role="Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ramen">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Detail">
+              <PropertyRef Name="Ramenid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -369,9 +359,10 @@ warning 6002: The table/view 'C:\USERS\MSI\SOURCE\REPOS\FINAL PROJECT\APP_DATA\D
           <EntitySetMapping Name="Details">
             <EntityTypeMapping TypeName="Database1Model.Detail">
               <MappingFragment StoreEntitySet="Detail">
-                <ScalarProperty Name="Headerid" ColumnName="Headerid" />
-                <ScalarProperty Name="Ramenid" ColumnName="Ramenid" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Ramenid" ColumnName="Ramenid" />
+                <ScalarProperty Name="Headerid" ColumnName="Headerid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

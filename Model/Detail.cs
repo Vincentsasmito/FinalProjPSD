@@ -14,6 +14,7 @@ namespace Final_Project.Model
     
     public partial class Detail
     {
+        public int Id { get; set; }
         public int Headerid { get; set; }
         public int Ramenid { get; set; }
         public int Quantity { get; set; }

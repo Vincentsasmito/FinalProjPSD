@@ -8,8 +8,8 @@
     <Property Name="Customerid" Type="Int32" Nullable="false" />
     <Property Name="staffid" Type="Int32" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="Details" Relationship="Self.FK_Detail_Header" FromRole="Header" ToRole="Detail" />
     <NavigationProperty Name="User" Relationship="Self.FK_Header_User" FromRole="Header" ToRole="User" />
+    <NavigationProperty Name="Details" Relationship="Database1Model.FK_Detail_Header" FromRole="Header" ToRole="Detail" />
   </EntityType>
   <EntityType Name="Meat">
     <Key>
@@ -29,7 +29,7 @@
     <Property Name="Broth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Meat" Relationship="Self.FK_Ramen_Meat" FromRole="Ramen" ToRole="Meat" />
-    <NavigationProperty Name="Details" Relationship="Self.FK_Detail_Ramen" FromRole="Ramen" ToRole="Detail" />
+    <NavigationProperty Name="Details" Relationship="Database1Model.FK_Detail_Ramen" FromRole="Ramen" ToRole="Detail" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -52,30 +52,6 @@
     <NavigationProperty Name="Headers" Relationship="Self.FK_Header_User" FromRole="User" ToRole="Header" />
     <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
   </EntityType>
-  <EntityType Name="Detail">
-    <Key>
-      <PropertyRef Name="Headerid" />
-      <PropertyRef Name="Ramenid" />
-      <PropertyRef Name="Quantity" />
-    </Key>
-    <Property Name="Headerid" Type="Int32" Nullable="false" />
-    <Property Name="Ramenid" Type="Int32" Nullable="false" />
-    <Property Name="Quantity" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Header" Relationship="Self.FK_Detail_Header" FromRole="Detail" ToRole="Header" />
-    <NavigationProperty Name="Raman" Relationship="Self.FK_Detail_Ramen" FromRole="Detail" ToRole="Ramen" />
-  </EntityType>
-  <Association Name="FK_Detail_Header">
-    <End Role="Header" Type="Self.Header" Multiplicity="1" />
-    <End Role="Detail" Type="Self.Detail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Header">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Detail">
-        <PropertyRef Name="Headerid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Header_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Header" Type="Self.Header" Multiplicity="*" />
@@ -100,18 +76,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Detail_Ramen">
-    <End Role="Ramen" Type="Database1Model.Ramen" Multiplicity="1" />
-    <End Role="Detail" Type="Self.Detail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Ramen">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Detail">
-        <PropertyRef Name="Ramenid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_User_Role">
     <End Role="Role" Type="Self.Role" Multiplicity="1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -130,11 +94,6 @@
     <EntitySet Name="Ramen" EntityType="Database1Model.Ramen" />
     <EntitySet Name="Roles" EntityType="Self.Role" />
     <EntitySet Name="Users" EntityType="Self.User" />
-    <EntitySet Name="Details" EntityType="Self.Detail" />
-    <AssociationSet Name="FK_Detail_Header" Association="Self.FK_Detail_Header">
-      <End Role="Header" EntitySet="Headers" />
-      <End Role="Detail" EntitySet="Details" />
-    </AssociationSet>
     <AssociationSet Name="FK_Header_User" Association="Self.FK_Header_User">
       <End Role="User" EntitySet="Users" />
       <End Role="Header" EntitySet="Headers" />
@@ -143,13 +102,53 @@
       <End Role="Meat" EntitySet="Meats" />
       <End Role="Ramen" EntitySet="Ramen" />
     </AssociationSet>
-    <AssociationSet Name="FK_Detail_Ramen" Association="Self.FK_Detail_Ramen">
-      <End Role="Ramen" EntitySet="Ramen" />
-      <End Role="Detail" EntitySet="Details" />
-    </AssociationSet>
     <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
       <End Role="Role" EntitySet="Roles" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
+    <EntitySet Name="Details" EntityType="Database1Model.Detail" />
+    <AssociationSet Name="FK_Detail_Header" Association="Database1Model.FK_Detail_Header">
+      <End Role="Header" EntitySet="Headers" />
+      <End Role="Detail" EntitySet="Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detail_Ramen" Association="Database1Model.FK_Detail_Ramen">
+      <End Role="Ramen" EntitySet="Ramen" />
+      <End Role="Detail" EntitySet="Details" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Detail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Headerid" Type="Int32" Nullable="false" />
+    <Property Name="Ramenid" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Header" Relationship="Database1Model.FK_Detail_Header" FromRole="Detail" ToRole="Header" />
+    <NavigationProperty Name="Raman" Relationship="Database1Model.FK_Detail_Ramen" FromRole="Detail" ToRole="Ramen" />
+  </EntityType>
+  <Association Name="FK_Detail_Header">
+    <End Type="Database1Model.Header" Role="Header" Multiplicity="1" />
+    <End Type="Database1Model.Detail" Role="Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Header">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Detail">
+        <PropertyRef Name="Headerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detail_Ramen">
+    <End Type="Database1Model.Ramen" Role="Ramen" Multiplicity="1" />
+    <End Type="Database1Model.Detail" Role="Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ramen">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Detail">
+        <PropertyRef Name="Ramenid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
