@@ -14,12 +14,17 @@
             Unhandled
             <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
             <ItemTemplate>
-                <h3><%#Eval("Name") %></h3>
-                <p>Broth: <%# Eval("Broth") %></p>
-                <p>Price: <%# Eval("Price") %></p>
-                <p>Meat: <%# Eval("meatName") %></p>
-                <asp:Button ID="UpdateButton" runat="server" UseSubmitBehavior="false" CommandName="Update" CommandArgument='<%# Eval("id") %>' Text="Update" />
-                <asp:Button ID="DeleteButton" runat="server" UseSubmitBehavior="false" CommandName="Delete" CommandArgument='<%# Eval("id") %>' Text="Delete" />
+                <h3><%#Eval("id") %></h3>
+                    <p>
+                        Staff ID: <%# Eval("staffid") %>
+                    </p>
+                    <p>
+                        Customer ID: <%# Eval("Customerid") %>
+                    </p>
+                    <p>
+                        Date: <%# Eval("Date") %>
+                    </p>
+                    <asp:Button ID="HandleButton" runat="server" CommandArgument='<%# Eval("id") %>' CommandName="Handle" Text="Handle" UseSubmitBehavior="false" />
             </ItemTemplate>
         </asp:Repeater>
         </div>
@@ -28,12 +33,16 @@
         Handled</p>
      <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater1_ItemCommand">
             <ItemTemplate>
-                <h3><%#Eval("Name") %></h3>
-                <p>Broth: <%# Eval("Broth") %></p>
-                <p>Price: <%# Eval("Price") %></p>
-                <p>Meat: <%# Eval("meatName") %></p>
-                <asp:Button ID="UpdateButton" runat="server" UseSubmitBehavior="false" CommandName="Update" CommandArgument='<%# Eval("id") %>' Text="Update" />
-                <asp:Button ID="DeleteButton" runat="server" UseSubmitBehavior="false" CommandName="Delete" CommandArgument='<%# Eval("id") %>' Text="Delete" />
+                <h3><%#Eval("id") %></h3>
+                    <p>
+                        Staff ID: <%# Eval("staffid") %>
+                    </p>
+                    <p>
+                        Customer ID: <%# Eval("Customerid") %>
+                    </p>
+                    <p>
+                        Date: <%# Eval("Date") %>
+                    </p>
             </ItemTemplate>
         </asp:Repeater>
     <p>

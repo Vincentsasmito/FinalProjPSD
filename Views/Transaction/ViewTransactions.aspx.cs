@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Final_Project.Model;
+using Final_Project.Handler;
 
 namespace Final_Project.Views.Transaction
 {
@@ -11,7 +13,32 @@ namespace Final_Project.Views.Transaction
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpCookie cookie = Request.Cookies.Get("UserData");
+            List<Header> transactionList = new List<Header>();
+            if (cookie == null)
+            {
+                Response.Redirect("~/Views/Users/Login.aspx");
+            }
+            //User is customer, redirect
+            else if (cookie["roleid"] == "3")
+            {
+                Response.Redirect("~/Views/Users/Home.aspx");
+            }
 
+            Repeater1.DataSource = TransactionHandler.getStaffHeader(0);
+            Repeater2.DataSource = TransactionHandler.getStaffHeader(1);
+            Repeater1.DataBind();
+            Repeater2.DataBind();
+        }
+
+        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            HttpCookie cookie = Request.Cookies.Get("UserData");
+            if (e.CommandName == "Handle")
+            {
+                string res = TransactionHandler.updateHeaders(Convert.ToInt32(e.CommandArgument), Convert.ToInt32(cookie["id"]));
+                Response.Redirect(Request.RawUrl);
+            }
         }
     }
 }
