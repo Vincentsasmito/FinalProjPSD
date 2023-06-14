@@ -40,6 +40,20 @@ namespace Final_Project.Repository
             }
         }
 
+        public static List<Header> getStaffHeaders(int mode)
+        {
+            //0 Indicates unhandled
+            if (mode == 0)
+            {
+                return (from x in db.Headers where x.staffid == 0 select x).ToList();
+            }
+            //other than 0 indicates handled
+            else
+            {
+                return (from x in db.Headers where x.staffid != 0 select x).ToList();
+            }
+        }
+
         public static List<DetailRes> getDetail(int headerId)
         {
             List<DetailRes> details = (from x in db.Ramen
@@ -54,6 +68,19 @@ namespace Final_Project.Repository
                                            price = x.Price,
                                        }).ToList();
             return details;
+        }
+
+        public static string updateHeaders(int headerId, int staffId)
+        {
+            Header header = db.Headers.Find(headerId);
+            if(header == null)
+            {
+                return "Update failed!";
+            }
+
+            header.staffid = staffId;
+            db.SaveChanges();
+            return "Update Success!";
         }
     }
 }

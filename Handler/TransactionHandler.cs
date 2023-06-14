@@ -35,6 +35,16 @@ namespace Final_Project.Handler
         {
             return TransactionRepository.getDetail(headerId);
         }
+
+        public static List<Header> getStaffHeader(int mode)
+        {
+            return (TransactionRepository.getStaffHeaders(mode));
+        }
+
+        public static string updateHeaders(int headerId, int staffId)
+        {
+            return TransactionRepository.updateHeaders(headerId, staffId);
+        }
     }
 
    
