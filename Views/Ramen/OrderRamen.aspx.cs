@@ -12,13 +12,13 @@ namespace Final_Project.Views.Ramen
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //accessible to customer only
+            //accessible to customer & admin only
             HttpCookie cookie = Request.Cookies.Get("UserData");
             if (cookie == null)
             {
                 Response.Redirect("~/Views/Users/Login.aspx");
             }
-            else if (cookie["roleid"] != "3")
+            else if (cookie["roleid"] == "3" || cookie["roleid"] == "1")
             {
                 Response.Redirect("~/Views/Users/Home.aspx");
             }

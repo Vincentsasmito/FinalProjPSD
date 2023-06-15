@@ -26,6 +26,7 @@ namespace Final_Project.Views
                     TextBox5.Text = cookie["password"];
                 }
             }
+            //ga punya akun kok ganti propil
             else
             {
                 Response.Redirect("Login.aspx");

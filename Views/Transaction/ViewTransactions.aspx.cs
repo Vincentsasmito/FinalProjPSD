@@ -19,7 +19,7 @@ namespace Final_Project.Views.Transaction
             {
                 Response.Redirect("~/Views/Users/Login.aspx");
             }
-            //User is customer, redirect
+            //Not accessible to customer
             else if (cookie["roleid"] == "3")
             {
                 Response.Redirect("~/Views/Users/Home.aspx");

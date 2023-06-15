@@ -12,7 +12,15 @@ namespace Final_Project.Views.Transaction
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            HttpCookie cookie = Request.Cookies.Get("UserData");
+            if(cookie == null)
+            {
+                Response.Redirect("~/Views/Users/Login.aspx");
+            }
+            else if(cookie["roleid"] == "2")
+            {
+                Response.Redirect("~/Views/Users/Home.aspx");
+            }
             string headerId = "";
             if (!IsPostBack)
             {

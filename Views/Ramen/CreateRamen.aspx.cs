@@ -12,7 +12,16 @@ namespace Final_Project.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            HttpCookie cookie = Request.Cookies.Get("UserData");
+            if (cookie == null)
+            {
+                Response.Redirect("~/Views/Users/Login.aspx");
+            }
+            //Not accessible to customer
+            else if(cookie["roleid"] == "3")
+            {
+                Response.Redirect("~/Views/Users/Home.aspx");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)

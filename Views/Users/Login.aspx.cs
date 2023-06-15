@@ -16,11 +16,11 @@ namespace Final_Project.Views
             if(!IsPostBack)
             {
                 HttpCookie uCook = Request.Cookies.Get("UserData");
+                //Validator because this page is only accessible
+                //to guests. If cookie exists, they are a member
                 if (uCook != null)
                 {
-                    TextBox1.Text = uCook["username"];
-                    TextBox2.Text = uCook["password"];
-                    Remember.Checked = true;
+                    Response.Redirect("Home.aspx");
                 }
             }
         }

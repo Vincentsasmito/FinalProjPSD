@@ -11,7 +11,16 @@ namespace Final_Project.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                HttpCookie uCook = Request.Cookies.Get("UserData");
+                //Validator because this page is only accessible
+                //to guests. If cookie exists, they are a member
+                if (uCook != null)
+                {
+                    Response.Redirect("Home.aspx");
+                }
+            }
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
