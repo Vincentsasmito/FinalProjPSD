@@ -11,6 +11,22 @@ namespace Final_Project.Views
     public partial class UpdateProfile : System.Web.UI.Page
     {
         HttpCookie cookie;
+        protected void logoutButton_Click(object sender, EventArgs e)
+        {
+            cookie = Request.Cookies.Get("UserData");
+            if (cookie == null)
+            {
+                Response.Redirect("~/Views//Users/Login.aspx");
+            }
+            else
+            {
+                Session.Abandon();
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(cookie);
+Response.Redirect("~/Views/Users/Homepage.aspx");   
+            }
+        }
+        public string navbarRole { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             cookie = Request.Cookies.Get("UserData");
@@ -26,10 +42,12 @@ namespace Final_Project.Views
                     TextBox5.Text = cookie["password"];
                 }
             }
+            //ga punya akun kok ganti propil
             else
             {
-                Response.Redirect("Login.aspx");
+                Response.Redirect("~/Views//Users/Login.aspx");
             }
+            navbarRole = cookie["roleid"];
         }
 
         protected void Button1_Click(object sender, EventArgs e)
