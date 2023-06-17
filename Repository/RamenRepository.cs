@@ -25,6 +25,11 @@ namespace Final_Project.Repository
             return res;
         }
 
+        public static Ramen GetSingleRamen(int id)
+        {
+            return (from x in db.Ramen where x.id == id select x).FirstOrDefault();
+        }
+
         public static string CreateRamen(int meatid, string name, string broth, string price)
         {
             Ramen ramen = RamenFactory.createRamen(meatid, name, broth, price);
