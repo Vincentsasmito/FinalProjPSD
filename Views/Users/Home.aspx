@@ -16,6 +16,7 @@
                 <li><a href="../Ramen/ManageRamen.aspx">Manage Ramen</a></li>
                 <li><a href="../Transaction/ViewTransactions.aspx">Order Queue</a></li>
                 <li><a href="../Transaction/History.aspx">History</a></li>
+                <li><a href="../Transaction/ShowReport.aspx">Show Report</a></li>
                 <% } %>
 
                 <%-- Staff Links --%> 

@@ -22,7 +22,7 @@ namespace Final_Project.Views
                 Session.Abandon();
                 cookie.Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies.Add(cookie);
-Response.Redirect("~/Views/Users/Homepage.aspx");   
+                Response.Redirect("~/Views/Users/Homepage.aspx");   
             }
         }
         public string navbarRole

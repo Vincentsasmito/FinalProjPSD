@@ -13,6 +13,11 @@ namespace Final_Project.Handler
         {
             return RamenRepository.GetRamen();
         }
+
+        public static Ramen GetSingleRamen(int id)
+        {
+            return RamenRepository.GetSingleRamen(id);
+        }
         public static string CreateRamen(int meatid, string name, string broth, string price)
         {
             return RamenRepository.CreateRamen(meatid, name, broth, price);

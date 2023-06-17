@@ -31,7 +31,7 @@ namespace Final_Project.Repository
         {
             if(customerId != 0)
             {
-                return (from x in db.Headers where x.Customerid == customerId select x).ToList(); ;
+                return (from x in db.Headers where x.Customerid == customerId select x).ToList();
             }
             //Custid of 0 indicates that an admin is requesting all transactions
             else
