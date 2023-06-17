@@ -10,6 +10,25 @@ namespace Final_Project.Views.Transaction
 {
     public partial class TransactionDetails : System.Web.UI.Page
     {
+        protected void logoutButton_Click(object sender, EventArgs e)
+        {
+            HttpCookie cookie = Request.Cookies.Get("UserData");
+            if (cookie == null)
+            {
+                Response.Redirect("~/Views//Users/Login.aspx");
+            }
+            else
+            {
+                Session.Abandon();
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(cookie);
+Response.Redirect("~/Views/Users/Homepage.aspx");   
+            }
+        }
+        public string navbarRole
+        {
+            get; set;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie cookie = Request.Cookies.Get("UserData");
@@ -21,6 +40,7 @@ namespace Final_Project.Views.Transaction
             {
                 Response.Redirect("~/Views/Users/Home.aspx");
             }
+            navbarRole = cookie["roleid"];
             string headerId = "";
             if (!IsPostBack)
             {

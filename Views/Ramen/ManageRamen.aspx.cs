@@ -11,6 +11,25 @@ namespace Final_Project.Views.Ramen
 {
     public partial class ManageRamen : System.Web.UI.Page
     {
+        protected void logoutButton_Click(object sender, EventArgs e)
+        {
+            HttpCookie cookie = Request.Cookies.Get("UserData");
+            if (cookie == null)
+            {
+                Response.Redirect("~/Views//Users/Login.aspx");
+            }
+            else
+            {
+                Session.Abandon();
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(cookie);
+Response.Redirect("~/Views/Users/Homepage.aspx");   
+            }
+        }
+        public string navbarRole
+        {
+            get; set;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             //Not accessible to customer
@@ -23,6 +42,7 @@ namespace Final_Project.Views.Ramen
             {
                 Response.Redirect("~/Views/Users/Home.aspx");
             }
+            navbarRole = cookie["roleid"];
             List<RamenRes> ramenList = RamenHandler.GetRamen();
             Repeater1.DataSource = ramenList;
             Repeater1.DataBind();
