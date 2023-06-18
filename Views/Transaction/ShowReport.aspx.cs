@@ -68,6 +68,7 @@ namespace Final_Project.Views
                 newHeaderRow["Date"] = x.Date;
                 headerTable.Rows.Add(newHeaderRow);
                 subtotal = 0;
+                grandtotal = 0;
 
                 foreach (Detail y in x.Details)
                 {

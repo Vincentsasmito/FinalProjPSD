@@ -18,14 +18,15 @@
                 <li><a href="../Ramen/ManageRamen.aspx">Manage Ramen</a></li>
                 <li><a href="../Transaction/ViewTransactions.aspx">Order Queue</a></li>
                 <li><a href="../Transaction/History.aspx">History</a></li>
+                <li><a href="../Transaction/ShowReport.aspx">Show Report</a></li>
                 <% } %>
 
-                <%-- Staff Links --%> <a href="ShowReport.aspx">ShowReport.aspx</a>
+                <%-- Staff Links --%> 
                 <% if (navbarRole == "2")
                     { %>
                 <li><a href="Home.aspx">Home</a></li>
                 <li><a href="../Ramen/ManageRamen.aspx">ManageRamen</a></li>
-                <li><a href="../Transaction/ViewTransactions.aspx">History</a></li>
+                <li><a href="../Transaction/ViewTransactions.aspx">Order Queue</a></li>
                 <% } %>
 
                 <%-- Member Links --%>

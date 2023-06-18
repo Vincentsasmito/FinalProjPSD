@@ -24,7 +24,7 @@
                     { %>
                 <li><a href="Home.aspx">Home</a></li>
                 <li><a href="../Ramen/ManageRamen.aspx">ManageRamen</a></li>
-                <li><a href="../Transaction/ViewTransactions.aspx">History</a></li>
+                <li><a href="../Transaction/ViewTransactions.aspx">Order Queue</a></li>
                 <% } %>
 
                 <%-- Member Links --%>

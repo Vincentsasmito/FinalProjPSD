@@ -22,7 +22,7 @@ namespace Final_Project.Views.Transaction
                 Session.Abandon();
                 cookie.Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies.Add(cookie);
-Response.Redirect("~/Views/Users/Homepage.aspx");   
+                Response.Redirect("~/Views/Users/Homepage.aspx");   
             }
         }
         public string navbarRole
@@ -46,13 +46,20 @@ Response.Redirect("~/Views/Users/Homepage.aspx");
             {
                 ListBox1.Items.Clear();
                 headerId = Request.QueryString["headerId"];
+                if(headerId == null)
+                {
+                    Response.Redirect("~/Views/Users/Login.aspx");
+                }
             }
-
-            List<DetailRes> details = TransactionHandler.getDetail(Convert.ToInt32(headerId));
-            foreach (var x in details)
+            if(headerId != null && headerId.Length != 0)
             {
-                ListBox1.Items.Add("Detail ID: " + x.id + " | Ramen Name: " + x.ramenName + " | Ramen Broth: " + x.broth + " | Ramen Quantity: " + x.quantity + " | Total Price: " + Convert.ToInt32(x.price) * x.quantity);
+                List<DetailRes> details = TransactionHandler.getDetail(Convert.ToInt32(headerId));
+                foreach (var x in details)
+                {
+                    ListBox1.Items.Add("Detail ID: " + x.id + " | Ramen Name: " + x.ramenName + " | Ramen Broth: " + x.broth + " | Ramen Quantity: " + x.quantity + " | Total Price: " + Convert.ToInt32(x.price) * x.quantity);
+                }
             }
+            
         }
 
         protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
