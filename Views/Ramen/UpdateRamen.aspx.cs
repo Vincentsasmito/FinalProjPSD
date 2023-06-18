@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Final_Project.Handler;
+using Final_Project.Controller;
 
 namespace Final_Project.Views
 {
@@ -81,7 +82,7 @@ Response.Redirect("~/Views/Users/Homepage.aspx");
             {
                 meatid = Convert.ToInt32(RadioButtonList1.SelectedValue);
             }
-            string res = RamenHandler.UpdateRamen(id, meatid, TextBox1.Text, TextBox2.Text, TextBox3.Text);
+            string res = RamenController.UpdateRamen(id, meatid, TextBox1.Text, TextBox2.Text, TextBox3.Text);
             ListBox1.Items.Clear();
             ListBox1.Items.Add(res);
         }
