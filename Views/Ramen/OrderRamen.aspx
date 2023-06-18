@@ -25,7 +25,7 @@
                     { %>
                 <li><a href="Home.aspx">Home</a></li>
                 <li><a href="../Ramen/ManageRamen.aspx">ManageRamen</a></li>
-                <li><a href="../Transaction/ViewTransactions.aspx">History</a></li>
+                <li><a href="../Transaction/ViewTransactions.aspx">Order Queue</a></li>
                 <% } %>
 
                 <%-- Member Links --%>
@@ -51,7 +51,7 @@
                 <h3><%#Eval("Name") %></h3>
                 <p>Broth: <%# Eval("Broth") %></p>
                 <p>Price: <%# Eval("Price") %></p>
-                <p>Price: <%# Eval("meatName") %></p>
+                <p>Meat: <%# Eval("meatName") %></p>
                 <asp:Button ID="OrderButton" runat="server" UseSubmitBehavior="false" CommandName="Order" CommandArgument='<%# Eval("id") + "|" + Eval("Name") + "|" + Eval("Broth") + "|" + Eval("Price") + "|" + Eval("meatName") %>' Text="Order Ramen" />
             </ItemTemplate>
         </asp:Repeater>

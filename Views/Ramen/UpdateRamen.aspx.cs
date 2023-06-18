@@ -90,5 +90,10 @@ Response.Redirect("~/Views/Users/Homepage.aspx");
         {
 
         }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ManageRamen.aspx");
+        }
     }
 }

@@ -24,7 +24,7 @@
                     { %>
                 <li><a href="Home.aspx">Home</a></li>
                 <li><a href="../Ramen/ManageRamen.aspx">ManageRamen</a></li>
-                <li><a href="../Transaction/ViewTransactions.aspx">History</a></li>
+                <li><a href="../Transaction/ViewTransactions.aspx">Order Queue</a></li>
                 <% } %>
 
                 <%-- Member Links --%>
@@ -69,6 +69,7 @@
         <br />
         <br />
         <asp:ListBox ID="ListBox1" runat="server"></asp:ListBox>
+         <asp:Button ID="Button3" runat="server" Text="Back to manage ramen" OnClick="Button3_Click" />
     </form>
 </body>
 </html>
